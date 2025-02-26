@@ -10,4 +10,14 @@ PATH <- "https://raw.githubusercontent.com/guru99-edu/R-Programming/master/poiso
 #Read the dataset in a variable
 df <- read.csv(PATH) 
 
+#Understand levels or classes in your dataset
+levels(factor(df$treat))
 
+#Optional: Plot data
+ggplot(df, aes(x = poison, y = time, fill = poison)) + geom_boxplot() + geom_jitter(shape = 15, color = "steelblue", position = position_jitter(0.21)) + theme_classic()
+
+#Anova Test
+anova_one_way <- aov(time~poison, data = df) 
+
+#Summary of Anova Test
+summary(anova_one_way)
